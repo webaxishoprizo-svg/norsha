@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Norsha Pvt. Ltd."
+version = "1.0.0"
+id = "artifacts/norsha-landing"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19702
+
+[services.development]
+run = "pnpm --filter @workspace/norsha-landing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/norsha-landing", "run", "build" ]
+publicDir = "artifacts/norsha-landing/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19702"
+BASE_PATH = "/"

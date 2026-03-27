@@ -1,0 +1,15 @@
+packages:
+  "framer-motion": "Smooth page transitions and component animations"
+  "react-hook-form": "Form state management for contact form"
+  "@hookform/resolvers": "Zod integration for contact form validation"
+
+images:
+  - path: "artifacts/norsha-landing/public/images/hero-bg.png"
+    description: "Abstract elegant minimal gradient background, clean airy white and subtle light blue, professional corporate style"
+    aspect_ratio: "16:9"
+  - path: "artifacts/norsha-landing/public/images/logo.png"
+    description: "Minimalist geometric corporate logo mark 'N' for Norsha, deep blue, professional, clean transparent background"
+    aspect_ratio: "1:1"
+
+notes:
+  - Mocked the contact form submission using a simulated mutation since there is no backend API defined.
