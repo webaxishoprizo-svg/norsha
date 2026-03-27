@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { motion } from "framer-motion";
-import { ArrowRight, ShoppingBag, Mic, TrendingUp } from "lucide-react";
+import { ArrowRight, ShoppingBag, Mic, TrendingUp, Zap, Gauge, BarChart3, Headphones } from "lucide-react";
 
 export default function Home() {
   return (
@@ -71,14 +71,29 @@ export default function Home() {
               className="group relative bg-white border border-black/5 rounded-2xl p-8 hover:-translate-y-2 transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] flex flex-col h-full overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-[#2563EB]" />
-              <div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+              <div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <ShoppingBag className="w-8 h-8 text-[#2563EB]" />
               </div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-2">Headless Commerce</div>
-              <h3 className="text-3xl font-display font-bold text-[#040812] mb-4">NexusQ</h3>
-              <p className="text-gray-500 mb-10 flex-1 leading-relaxed text-lg">
-                The next-generation headless ecommerce platform empowering modern retail brands to scale without limits.
+              <div className="text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-2">Headless Shopify Specialists</div>
+              <h3 className="text-3xl font-display font-bold text-[#040812] mb-3">NexusQ</h3>
+              <p className="text-gray-500 mb-6 flex-1 leading-relaxed">
+                Elite React storefronts engineered for sub-second speed and conversion-driven growth. Hydrogen, Next.js, and Shopify Mobile — built for brands that demand performance.
               </p>
+              {/* Real stats from nexusq.in */}
+              <div className="grid grid-cols-3 gap-3 mb-8 py-4 border-t border-b border-black/5">
+                <div className="text-center">
+                  <div className="text-xl font-display font-bold text-[#040812]">0.8s</div>
+                  <div className="text-xs text-gray-400 mt-0.5">Avg Load</div>
+                </div>
+                <div className="text-center border-x border-black/5">
+                  <div className="text-xl font-display font-bold text-[#040812]">100</div>
+                  <div className="text-xs text-gray-400 mt-0.5">Lighthouse</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-xl font-display font-bold text-[#040812]">250%+</div>
+                  <div className="text-xs text-gray-400 mt-0.5">Conv. Lift</div>
+                </div>
+              </div>
               <div className="mt-auto">
                 <a 
                   href="https://nexusq.in" 
@@ -103,14 +118,27 @@ export default function Home() {
               className="group relative bg-white border border-black/5 rounded-2xl p-8 hover:-translate-y-2 transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] flex flex-col h-full overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-indigo-500" />
-              <div className="w-16 h-16 rounded-full bg-indigo-50 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+              <div className="w-16 h-16 rounded-full bg-indigo-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <Mic className="w-8 h-8 text-indigo-500" />
               </div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-indigo-500 mb-2">Conversational AI</div>
-              <h3 className="text-3xl font-display font-bold text-[#040812] mb-4">Flowlith</h3>
-              <p className="text-gray-500 mb-10 flex-1 leading-relaxed text-lg">
-                Iris voice agent AI. Revolutionizing customer interactions with hyper-realistic conversational artificial intelligence.
+              <div className="text-xs font-semibold uppercase tracking-wider text-indigo-500 mb-2">Iris Voice Agent AI</div>
+              <h3 className="text-3xl font-display font-bold text-[#040812] mb-3">Flowlith</h3>
+              <p className="text-gray-500 mb-6 flex-1 leading-relaxed">
+                Meet Iris — an intelligent AI agent built for real-world business automation. From customer support to lead qualification, Iris handles complex conversations with human-like understanding.
               </p>
+              {/* Key capabilities */}
+              <div className="grid grid-cols-1 gap-2 mb-8 py-4 border-t border-b border-black/5">
+                {[
+                  { icon: <Headphones className="w-3.5 h-3.5" />, label: "Customer Support Automation" },
+                  { icon: <Zap className="w-3.5 h-3.5" />, label: "Lead Qualification" },
+                  { icon: <Mic className="w-3.5 h-3.5" />, label: "Human-like Voice Conversations" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm text-gray-500">
+                    <span className="text-indigo-400">{item.icon}</span>
+                    {item.label}
+                  </div>
+                ))}
+              </div>
               <div className="mt-auto">
                 <a 
                   href="https://flowlith.com" 
@@ -135,14 +163,23 @@ export default function Home() {
               className="group relative bg-white border border-black/5 rounded-2xl p-8 hover:-translate-y-2 transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] flex flex-col h-full overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-teal-500" />
-              <div className="w-16 h-16 rounded-full bg-teal-50 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+              <div className="w-16 h-16 rounded-full bg-teal-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <TrendingUp className="w-8 h-8 text-teal-500" />
               </div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-teal-500 mb-2">Digital Marketing</div>
-              <h3 className="text-3xl font-display font-bold text-[#040812] mb-4">NakMedia</h3>
-              <p className="text-gray-500 mb-10 flex-1 leading-relaxed text-lg">
-                Data-driven digital marketing agency helping brands dominate their market through precise execution.
+              <div className="text-xs font-semibold uppercase tracking-wider text-teal-500 mb-2">Production · Marketing · Branding</div>
+              <h3 className="text-3xl font-display font-bold text-[#040812] mb-3">NakMedia</h3>
+              <p className="text-gray-500 mb-6 flex-1 leading-relaxed">
+                Dubai & India-based agency covering social media marketing, brand cinematography, digital advertising, web infrastructure, and AI automation — all under one roof.
               </p>
+              {/* Services grid */}
+              <div className="grid grid-cols-2 gap-2 mb-8 py-4 border-t border-b border-black/5">
+                {["Social Media", "Cinematography", "Digital Ads", "AI Automation", "Web Infra", "UI/UX Design"].map((s) => (
+                  <div key={s} className="flex items-center gap-1.5 text-xs text-gray-500">
+                    <BarChart3 className="w-3 h-3 text-teal-400 shrink-0" />
+                    {s}
+                  </div>
+                ))}
+              </div>
               <div className="mt-auto">
                 <a 
                   href="https://nakmedia.co" 
