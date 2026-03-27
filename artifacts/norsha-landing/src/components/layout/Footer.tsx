@@ -13,9 +13,15 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-1 lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 group mb-6 inline-flex">
-              <div className="w-9 h-9 bg-[#2563EB] flex items-center justify-center">
-                <span className="text-white font-display font-bold text-lg leading-none">N</span>
-              </div>
+              <div
+                className="w-11 h-11 rounded-full overflow-hidden shrink-0"
+                style={{
+                  backgroundImage: "url('/norsha-logo.jpg')",
+                  backgroundSize: "auto 100%",
+                  backgroundPosition: "left center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              />
               <span className="font-display font-bold text-xl tracking-tight text-white">
                 Norsha Pvt. Ltd.
               </span>
@@ -67,10 +73,11 @@ export function Footer() {
           <div>
             <h3 className="font-display font-semibold text-lg mb-6">Contact</h3>
             <ul className="space-y-4 text-sm text-slate-400">
-              <li>123 Innovation Drive</li>
-              <li>Tech Park, TP 45678</li>
+              <li>Door No:5/52 Kodibail,</li>
+              <li>Mangalpady Gram Panchayth, Uppala,</li>
+              <li>Kasargod- 671322, Kerala</li>
               <li>
-                <a href="mailto:hello@norsha.com" className="hover:text-white transition-colors">hello@norsha.com</a>
+                <a href="mailto:norshaprivatelimited@gmail.com" className="hover:text-white transition-colors">norshaprivatelimited@gmail.com</a>
               </li>
             </ul>
           </div>

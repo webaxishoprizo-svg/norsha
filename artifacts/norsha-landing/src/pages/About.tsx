@@ -326,7 +326,7 @@ export default function About() {
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
         >
           <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-8">Ready to partner with Norsha?</h2>
-          <Link href="/contact" className="inline-flex px-8 py-4 rounded-[6px] bg-white text-[#2563EB] font-bold hover:bg-gray-50 transition-colors shadow-lg text-lg">
+          <Link href="/contact" className="inline-flex px-8 py-4 rounded-[6px] bg-white text-[#3333CC] font-bold hover:bg-gray-50 transition-colors shadow-lg text-lg">
             Get in Touch
           </Link>
         </motion.div>

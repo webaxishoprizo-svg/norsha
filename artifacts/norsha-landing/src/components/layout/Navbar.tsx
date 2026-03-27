@@ -59,10 +59,14 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <motion.div 
               whileHover={{ scale: 1.05 }}
-              className="w-9 h-9 bg-[#2563EB] flex items-center justify-center shadow-md"
-            >
-              <span className="text-white font-display font-bold text-lg leading-none">N</span>
-            </motion.div>
+              className="w-11 h-11 rounded-full overflow-hidden shadow-md shrink-0"
+              style={{
+                backgroundImage: "url('/norsha-logo.jpg')",
+                backgroundSize: "auto 100%",
+                backgroundPosition: "left center",
+                backgroundRepeat: "no-repeat",
+              }}
+            />
             <span className={`font-display font-bold text-xl tracking-tight transition-colors ${isScrolled ? 'text-[#040812]' : 'text-white'}`}>
               Norsha Pvt. Ltd.
             </span>
@@ -93,7 +97,7 @@ export function Navbar() {
             })}
             <Link
               href="/contact"
-              className="px-6 py-2.5 rounded-[6px] bg-[#2563EB] text-white text-sm font-medium hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/30"
+              className="px-6 py-2.5 rounded-[6px] bg-[#3333CC] text-white text-sm font-medium hover:bg-[#2828B8] transition-colors shadow-lg shadow-[#3333CC]/30"
             >
               Get in Touch
             </Link>
@@ -135,7 +139,7 @@ export function Navbar() {
               <motion.div variants={mobileItemVariants}>
                 <Link
                   href="/contact"
-                  className="block mx-4 mt-2 text-center px-6 py-3 rounded-[6px] bg-[#2563EB] text-white text-lg font-medium"
+                  className="block mx-4 mt-2 text-center px-6 py-3 rounded-[6px] bg-[#3333CC] text-white text-lg font-medium"
                 >
                   Get in Touch
                 </Link>

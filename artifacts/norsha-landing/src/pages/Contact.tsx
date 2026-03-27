@@ -2,7 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, Send, Loader2 } from "lucide-react";
+import { MapPin, Mail, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { contactFormSchema, type ContactFormValues, useSubmitContact } from "@/hooks/use-contact";
 
@@ -107,22 +107,11 @@ export default function Contact() {
                 <div className="space-y-8">
                   <div className="flex items-start gap-5">
                     <div className="w-12 h-12 rounded-full bg-[#2563EB]/20 flex items-center justify-center shrink-0">
-                      <Phone className="w-5 h-5 text-[#2563EB]" />
-                    </div>
-                    <div className="pt-2">
-                      <a href="tel:+1234567890" className="text-lg text-white hover:text-[#2563EB] transition-colors">
-                        +1 (234) 567-890
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-5">
-                    <div className="w-12 h-12 rounded-full bg-[#2563EB]/20 flex items-center justify-center shrink-0">
                       <Mail className="w-5 h-5 text-[#2563EB]" />
                     </div>
                     <div className="pt-2">
-                      <a href="mailto:hello@norsha.com" className="text-lg text-white hover:text-[#2563EB] transition-colors">
-                        hello@norsha.com
+                      <a href="mailto:norshaprivatelimited@gmail.com" className="text-lg text-white hover:text-[#2563EB] transition-colors break-all">
+                        norshaprivatelimited@gmail.com
                       </a>
                     </div>
                   </div>
@@ -133,9 +122,10 @@ export default function Contact() {
                     </div>
                     <div className="pt-2">
                       <p className="text-lg text-white leading-relaxed">
-                        123 Innovation Drive<br />
-                        Tech Park, TP 45678<br />
-                        India
+                        Door No:5/52 Kodibail,<br />
+                        Mangalpady Gram Panchayth,<br />
+                        Uppala, Kasargod- 671322,<br />
+                        Kerala, India
                       </p>
                     </div>
                   </div>
@@ -144,9 +134,15 @@ export default function Contact() {
               
               <div className="mt-16 pt-8 border-t border-white/10">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-[#2563EB] flex items-center justify-center">
-                    <span className="text-white font-display font-bold">N</span>
-                  </div>
+                  <div
+                    className="w-10 h-10 rounded-full overflow-hidden shrink-0"
+                    style={{
+                      backgroundImage: "url('/norsha-logo.jpg')",
+                      backgroundSize: "auto 100%",
+                      backgroundPosition: "left center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
                   <span className="font-display font-bold tracking-tight">Norsha Pvt. Ltd.</span>
                 </div>
               </div>
@@ -221,7 +217,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isPending}
-                    className="w-full md:w-auto px-10 py-5 rounded-[6px] bg-[#2563EB] text-white font-bold shadow-lg shadow-blue-500/25 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-3 text-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                    className="w-full md:w-auto px-10 py-5 rounded-[6px] bg-[#3333CC] text-white font-bold shadow-lg shadow-[#3333CC]/25 hover:bg-[#2828B8] hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-3 text-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
                   >
                     {isPending ? (
                       <>

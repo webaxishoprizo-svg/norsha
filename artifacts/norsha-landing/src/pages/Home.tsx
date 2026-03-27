@@ -106,7 +106,7 @@ export default function Home() {
             >
               <a 
                 href="#companies" 
-                className="w-full sm:w-auto px-8 py-4 rounded-[6px] bg-[#2563EB] text-white font-medium hover:bg-blue-600 transition-all duration-300 text-lg shadow-[0_0_40px_-10px_rgba(37,99,235,0.5)] hover:shadow-[0_0_60px_-15px_rgba(37,99,235,0.7)]"
+                className="w-full sm:w-auto px-8 py-4 rounded-[6px] bg-[#3333CC] text-white font-medium hover:bg-[#2828B8] transition-all duration-300 text-lg shadow-[0_0_40px_-10px_rgba(51,51,204,0.5)] hover:shadow-[0_0_60px_-15px_rgba(51,51,204,0.7)]"
               >
                 Explore Companies
               </a>
@@ -367,7 +367,7 @@ export default function Home() {
             />
             <Link 
               href="/contact"
-              className="inline-flex px-10 py-5 rounded-[6px] bg-[#2563EB] text-white font-medium hover:bg-blue-600 transition-all duration-300 text-lg shadow-[0_0_40px_-10px_rgba(37,99,235,0.5)] hover:shadow-[0_0_60px_-15px_rgba(37,99,235,0.7)] relative z-10"
+              className="inline-flex px-10 py-5 rounded-[6px] bg-[#3333CC] text-white font-medium hover:bg-[#2828B8] transition-all duration-300 text-lg shadow-[0_0_40px_-10px_rgba(51,51,204,0.5)] hover:shadow-[0_0_60px_-15px_rgba(51,51,204,0.7)] relative z-10"
             >
               Start the Conversation
             </Link>
