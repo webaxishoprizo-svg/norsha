@@ -24,7 +24,7 @@ export default function About() {
   return (
     <Layout>
       {/* Header */}
-      <section className="pt-32 pb-32 bg-gradient-to-b from-[#040812] to-[#0a1628] relative overflow-hidden flex flex-col justify-center min-h-[60vh]">
+      <section className="pt-32 pb-32 bg-[#0a0b14] relative overflow-hidden flex flex-col justify-center min-h-[60vh]">
         <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[#2563EB]/10 rounded-full blur-[100px] pointer-events-none -z-10 mix-blend-screen animate-float" style={{ animationDuration: '8s' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center w-full">
           <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 tracking-tight flex flex-wrap justify-center gap-x-[0.25em]">

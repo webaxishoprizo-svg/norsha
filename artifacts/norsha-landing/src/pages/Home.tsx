@@ -56,7 +56,7 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-gradient-to-b from-[#040812] to-[#0a1628]">
+      <section className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-[#0a0b14]">
         {/* Floating blue orbs */}
         <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-[#2563EB]/20 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-screen animate-float" style={{ animationDuration: '6s', animationDelay: '0s' }} />
         <div className="absolute bottom-1/4 right-1/4 w-[30vw] h-[30vw] bg-indigo-500/20 rounded-full blur-[100px] pointer-events-none -z-10 mix-blend-screen animate-float" style={{ animationDuration: '7s', animationDelay: '1s' }} />
@@ -339,7 +339,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-[#040812] relative overflow-hidden">
+      <section className="py-32 bg-[#0a0b14] relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-8 tracking-tight flex flex-wrap justify-center gap-x-[0.25em]">

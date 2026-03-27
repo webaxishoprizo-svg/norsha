@@ -61,7 +61,7 @@ export default function Contact() {
   return (
     <Layout>
       {/* Hero Header */}
-      <section className="pt-32 pb-24 bg-gradient-to-b from-[#040812] to-[#0a1628]">
+      <section className="pt-32 pb-24 bg-[#0a0b14]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 tracking-tight flex flex-wrap justify-center gap-x-[0.25em]">
             {h1Text.map((word, i) => (
@@ -96,7 +96,7 @@ export default function Contact() {
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1, duration: 0.6 }}
-              className="lg:col-span-2 bg-[#0d1b2a] rounded-3xl p-10 md:p-12 text-white shadow-2xl flex flex-col justify-between"
+              className="lg:col-span-2 bg-[#0a0b14] rounded-3xl p-10 md:p-12 text-white shadow-2xl flex flex-col justify-between"
             >
               <div>
                 <h3 className="text-3xl font-display font-bold mb-8">Contact Information</h3>
