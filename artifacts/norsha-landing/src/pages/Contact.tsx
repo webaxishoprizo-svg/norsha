@@ -39,22 +39,47 @@ export default function Contact() {
     });
   };
 
+  const h1Text = "Get in Touch".split(" ");
+
+  const formContainerVariants = {
+    hidden: { opacity: 0, x: 40 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: 0.15,
+        staggerChildren: 0.05,
+      }
+    }
+  };
+
+  const fieldVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
     <Layout>
       {/* Hero Header */}
       <section className="pt-32 pb-24 bg-gradient-to-b from-[#040812] to-[#0a1628]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-display font-bold text-white mb-6 tracking-tight"
-          >
-            Get in Touch
-          </motion.h1>
+          <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 tracking-tight flex flex-wrap justify-center gap-x-[0.25em]">
+            {h1Text.map((word, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08, type: "spring", stiffness: 200, damping: 20 }}
+                className="inline-block"
+              >
+                {word}
+              </motion.span>
+            ))}
+          </h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: h1Text.length * 0.08 + 0.1 }}
             className="text-xl text-white/70 max-w-2xl mx-auto font-light"
           >
             Connect with our team to discuss partnerships, investments, or inquiries regarding our portfolio companies.
@@ -68,9 +93,9 @@ export default function Contact() {
             
             {/* Contact Info Panel */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
               className="lg:col-span-2 bg-[#0d1b2a] rounded-3xl p-10 md:p-12 text-white shadow-2xl flex flex-col justify-between"
             >
               <div>
@@ -129,74 +154,74 @@ export default function Contact() {
 
             {/* Form Panel */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+              variants={formContainerVariants}
+              initial="hidden"
+              animate="visible"
               className="lg:col-span-3 bg-white rounded-3xl p-10 md:p-12 shadow-xl border border-black/5"
             >
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
+                  <motion.div variants={fieldVariants} className="space-y-3">
                     <label htmlFor="name" className="text-sm font-semibold text-[#040812] uppercase tracking-wide">Your Name</label>
                     <input
                       {...form.register("name")}
                       id="name"
-                      className="w-full px-5 py-4 rounded-xl bg-white border border-gray-200 focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/10 transition-all text-[#040812] text-lg"
+                      className="w-full px-5 py-4 rounded-xl bg-white border border-gray-200 focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/10 focus:scale-[1.02] transition-all text-[#040812] text-lg"
                       placeholder="John Doe"
                     />
                     {form.formState.errors.name && (
                       <p className="text-sm text-red-500 font-medium">{form.formState.errors.name.message}</p>
                     )}
-                  </div>
+                  </motion.div>
 
-                  <div className="space-y-3">
+                  <motion.div variants={fieldVariants} className="space-y-3">
                     <label htmlFor="email" className="text-sm font-semibold text-[#040812] uppercase tracking-wide">Email Address</label>
                     <input
                       {...form.register("email")}
                       id="email"
                       type="email"
-                      className="w-full px-5 py-4 rounded-xl bg-white border border-gray-200 focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/10 transition-all text-[#040812] text-lg"
+                      className="w-full px-5 py-4 rounded-xl bg-white border border-gray-200 focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/10 focus:scale-[1.02] transition-all text-[#040812] text-lg"
                       placeholder="john@example.com"
                     />
                     {form.formState.errors.email && (
                       <p className="text-sm text-red-500 font-medium">{form.formState.errors.email.message}</p>
                     )}
-                  </div>
+                  </motion.div>
                 </div>
 
-                <div className="space-y-3">
+                <motion.div variants={fieldVariants} className="space-y-3">
                   <label htmlFor="subject" className="text-sm font-semibold text-[#040812] uppercase tracking-wide">Subject</label>
                   <input
                     {...form.register("subject")}
                     id="subject"
-                    className="w-full px-5 py-4 rounded-xl bg-white border border-gray-200 focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/10 transition-all text-[#040812] text-lg"
+                    className="w-full px-5 py-4 rounded-xl bg-white border border-gray-200 focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/10 focus:scale-[1.02] transition-all text-[#040812] text-lg"
                     placeholder="How can we help?"
                   />
                   {form.formState.errors.subject && (
                     <p className="text-sm text-red-500 font-medium">{form.formState.errors.subject.message}</p>
                   )}
-                </div>
+                </motion.div>
 
-                <div className="space-y-3">
+                <motion.div variants={fieldVariants} className="space-y-3">
                   <label htmlFor="message" className="text-sm font-semibold text-[#040812] uppercase tracking-wide">Message</label>
                   <textarea
                     {...form.register("message")}
                     id="message"
                     rows={6}
-                    className="w-full px-5 py-4 rounded-xl bg-white border border-gray-200 focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/10 transition-all text-[#040812] text-lg resize-none"
+                    className="w-full px-5 py-4 rounded-xl bg-white border border-gray-200 focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/10 focus:scale-[1.02] transition-all text-[#040812] text-lg resize-none"
                     placeholder="Tell us more about your inquiry..."
                   />
                   {form.formState.errors.message && (
                     <p className="text-sm text-red-500 font-medium">{form.formState.errors.message.message}</p>
                   )}
-                </div>
+                </motion.div>
 
-                <div className="pt-4">
+                <motion.div variants={fieldVariants} className="pt-4">
                   <button
                     type="submit"
                     disabled={isPending}
-                    className="w-full md:w-auto px-10 py-5 rounded-xl bg-[#2563EB] text-white font-bold shadow-lg shadow-blue-500/25 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-3 text-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                    className="w-full md:w-auto px-10 py-5 rounded-[6px] bg-[#2563EB] text-white font-bold shadow-lg shadow-blue-500/25 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-3 text-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
                   >
                     {isPending ? (
                       <>
@@ -211,7 +236,7 @@ export default function Contact() {
                     )}
                   </button>
                   <p className="text-sm text-gray-500 mt-4 md:mt-6 text-center md:text-left">We'll respond within 24 hours.</p>
-                </div>
+                </motion.div>
               </form>
             </motion.div>
 

@@ -1,26 +1,49 @@
 import { Layout } from "@/components/layout/Layout";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Target, Lightbulb, Shield, Zap, Crosshair, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
+import { useRef } from "react";
 
 export default function About() {
+  const h1Text = "About Norsha".split(" ");
+
+  // Parallax refs
+  const nexusQRef = useRef(null);
+  const flowlithRef = useRef(null);
+  const nakMediaRef = useRef(null);
+
+  const { scrollYProgress: sqY1 } = useScroll({ target: nexusQRef, offset: ["start end", "end start"] });
+  const sqY1Trans = useTransform(sqY1, [0, 1], [-30, 30]);
+
+  const { scrollYProgress: sqY2 } = useScroll({ target: flowlithRef, offset: ["start end", "end start"] });
+  const sqY2Trans = useTransform(sqY2, [0, 1], [-30, 30]);
+
+  const { scrollYProgress: sqY3 } = useScroll({ target: nakMediaRef, offset: ["start end", "end start"] });
+  const sqY3Trans = useTransform(sqY3, [0, 1], [-30, 30]);
+
   return (
     <Layout>
       {/* Header */}
       <section className="pt-32 pb-32 bg-gradient-to-b from-[#040812] to-[#0a1628] relative overflow-hidden flex flex-col justify-center min-h-[60vh]">
-        <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[#2563EB]/10 rounded-full blur-[100px] pointer-events-none -z-10 mix-blend-screen" />
+        <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[#2563EB]/10 rounded-full blur-[100px] pointer-events-none -z-10 mix-blend-screen animate-float" style={{ animationDuration: '8s' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center w-full">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-display font-bold text-white mb-6 tracking-tight"
-          >
-            About Norsha
-          </motion.h1>
+          <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 tracking-tight flex flex-wrap justify-center gap-x-[0.25em]">
+            {h1Text.map((word, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08, type: "spring", stiffness: 200, damping: 20 }}
+                className="inline-block"
+              >
+                {word}
+              </motion.span>
+            ))}
+          </h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: h1Text.length * 0.08 + 0.1 }}
             className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto font-light"
           >
             A holding company driving structural innovation across ecommerce infrastructure, artificial intelligence, and digital performance.
@@ -33,9 +56,11 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: 0, duration: 0.6 }}
+              whileHover={{ scale: 1.01 }}
               className="bg-[#f0f4ff] p-12 rounded-3xl border border-[#2563EB]/10 shadow-sm"
             >
               <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm">
@@ -48,10 +73,11 @@ export default function About() {
             </motion.div>
             
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: 0.15, duration: 0.6 }}
+              whileHover={{ scale: 1.01 }}
               className="bg-[#f0f4ff] p-12 rounded-3xl border border-[#2563EB]/10 shadow-sm"
             >
               <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm">
@@ -71,8 +97,14 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
           
           {/* NexusQ */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1">
+          <div ref={nexusQRef} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              className="order-2 lg:order-1"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-[#2563EB] text-sm font-semibold tracking-wide uppercase mb-6">Headless Shopify Specialists</div>
               <h3 className="text-4xl md:text-5xl font-display font-bold mb-4 text-[#040812]">NexusQ</h3>
               <p className="text-base text-[#2563EB] font-medium mb-6 italic">"Engineered for Performance"</p>
@@ -114,18 +146,39 @@ export default function About() {
               <a href="https://nexusq.in" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[#2563EB] font-semibold text-lg hover:gap-3 transition-all">
                 Explore NexusQ <ArrowRight className="w-5 h-5" />
               </a>
-            </div>
-            <div className="order-1 lg:order-2 aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Ecommerce Analytics" className="w-full h-full object-cover" />
-            </div>
+            </motion.div>
+            <motion.div 
+              className="order-1 lg:order-2 aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl relative"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.div style={{ y: sqY1Trans }} className="w-full h-[120%] -top-[10%] absolute">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Ecommerce Analytics" className="w-full h-full object-cover" />
+              </motion.div>
+            </motion.div>
           </div>
 
           {/* Flowlith */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-              <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200" alt="Artificial Intelligence" className="w-full h-full object-cover" />
-            </div>
-            <div>
+          <div ref={flowlithRef} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl relative"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.div style={{ y: sqY2Trans }} className="w-full h-[120%] -top-[10%] absolute">
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200" alt="Artificial Intelligence" className="w-full h-full object-cover" />
+              </motion.div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="inline-block px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-600 text-sm font-semibold tracking-wide uppercase mb-6">Iris Voice Agent AI</div>
               <h3 className="text-4xl md:text-5xl font-display font-bold mb-4 text-[#040812]">Flowlith</h3>
               <p className="text-base text-indigo-500 font-medium mb-6 italic">"Meet Iris — Your AI Agent"</p>
@@ -151,12 +204,18 @@ export default function About() {
               <a href="https://flowlith.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-indigo-600 font-semibold text-lg hover:gap-3 transition-all">
                 Explore Flowlith <ArrowRight className="w-5 h-5" />
               </a>
-            </div>
+            </motion.div>
           </div>
 
           {/* NakMedia */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1">
+          <div ref={nakMediaRef} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              className="order-2 lg:order-1"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="inline-block px-4 py-1.5 rounded-full bg-teal-50 text-teal-600 text-sm font-semibold tracking-wide uppercase mb-6">Dubai · India · Global</div>
               <h3 className="text-4xl md:text-5xl font-display font-bold mb-4 text-[#040812]">NakMedia</h3>
               <p className="text-base text-teal-600 font-medium mb-6 italic">"Production · Digital Marketing · AI Automation"</p>
@@ -184,10 +243,18 @@ export default function About() {
               <a href="https://nakmedia.co" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-teal-600 font-semibold text-lg hover:gap-3 transition-all">
                 Explore NakMedia <ArrowRight className="w-5 h-5" />
               </a>
-            </div>
-            <div className="order-1 lg:order-2 aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Data Analytics" className="w-full h-full object-cover" />
-            </div>
+            </motion.div>
+            <motion.div 
+              className="order-1 lg:order-2 aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl relative"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.div style={{ y: sqY3Trans }} className="w-full h-[120%] -top-[10%] absolute">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Data Analytics" className="w-full h-full object-cover" />
+              </motion.div>
+            </motion.div>
           </div>
 
         </div>
@@ -202,41 +269,67 @@ export default function About() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-10 rounded-2xl shadow-sm border border-black/5 text-center">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0 }}
+              whileHover={{ y: -4 }}
+              className="bg-white p-10 rounded-2xl shadow-sm border border-black/5 text-center"
+            >
               <div className="w-16 h-16 mx-auto bg-[#2563EB]/10 rounded-full flex items-center justify-center mb-6 text-[#2563EB]">
                 <Shield className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-display font-bold mb-4 text-[#040812]">Trust</h3>
               <p className="text-gray-500 leading-relaxed">We build platforms that enterprises rely on. Security, reliability, and transparency are foundational to everything we create.</p>
-            </div>
+            </motion.div>
             
-            <div className="bg-white p-10 rounded-2xl shadow-sm border border-black/5 text-center">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              whileHover={{ y: -4 }}
+              className="bg-white p-10 rounded-2xl shadow-sm border border-black/5 text-center"
+            >
               <div className="w-16 h-16 mx-auto bg-[#2563EB]/10 rounded-full flex items-center justify-center mb-6 text-[#2563EB]">
                 <Zap className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-display font-bold mb-4 text-[#040812]">Innovation</h3>
               <p className="text-gray-500 leading-relaxed">We don't follow trends; we set them. Our companies exist to disrupt legacy systems and introduce superior methodologies.</p>
-            </div>
+            </motion.div>
             
-            <div className="bg-white p-10 rounded-2xl shadow-sm border border-black/5 text-center">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ y: -4 }}
+              className="bg-white p-10 rounded-2xl shadow-sm border border-black/5 text-center"
+            >
               <div className="w-16 h-16 mx-auto bg-[#2563EB]/10 rounded-full flex items-center justify-center mb-6 text-[#2563EB]">
                 <Crosshair className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-display font-bold mb-4 text-[#040812]">Precision</h3>
               <p className="text-gray-500 leading-relaxed">Execution is everything. Whether in code, marketing strategy, or AI training, we operate with exacting standards.</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* CTA Strip */}
       <section className="py-20 bg-[#2563EB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
           <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-8">Ready to partner with Norsha?</h2>
-          <Link href="/contact" className="inline-flex px-8 py-4 rounded-full bg-white text-[#2563EB] font-bold hover:bg-gray-50 transition-colors shadow-lg text-lg">
+          <Link href="/contact" className="inline-flex px-8 py-4 rounded-[6px] bg-white text-[#2563EB] font-bold hover:bg-gray-50 transition-colors shadow-lg text-lg">
             Get in Touch
           </Link>
-        </div>
+        </motion.div>
       </section>
     </Layout>
   );

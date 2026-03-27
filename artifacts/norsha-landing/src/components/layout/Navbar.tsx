@@ -25,6 +25,25 @@ export function Navbar() {
     setMobileMenuOpen(false);
   }, [location]);
 
+  const mobileContainerVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: { 
+      opacity: 1, 
+      height: "auto",
+      transition: {
+        duration: 0.3,
+        staggerChildren: 0.1,
+        when: "beforeChildren"
+      }
+    },
+    exit: { opacity: 0, height: 0, transition: { duration: 0.2 } }
+  };
+
+  const mobileItemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 }
+  };
+
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
@@ -38,9 +57,12 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 bg-[#2563EB] flex items-center justify-center shadow-md">
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="w-9 h-9 bg-[#2563EB] flex items-center justify-center shadow-md"
+            >
               <span className="text-white font-display font-bold text-lg leading-none">N</span>
-            </div>
+            </motion.div>
             <span className={`font-display font-bold text-xl tracking-tight transition-colors ${isScrolled ? 'text-[#040812]' : 'text-white'}`}>
               Norsha Pvt. Ltd.
             </span>
@@ -48,20 +70,30 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.path}
-                className={`text-sm font-medium transition-colors hover:text-[#2563EB] ${
-                  location === link.path ? "text-[#2563EB]" : (isScrolled ? "text-gray-600" : "text-white/80 hover:text-white")
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = location === link.path;
+              return (
+                <div key={link.name} className="relative">
+                  <Link
+                    href={link.path}
+                    className={`text-sm font-medium transition-colors hover:text-[#2563EB] pb-1 ${
+                      isActive ? "text-[#2563EB]" : (isScrolled ? "text-gray-600" : "text-white/80 hover:text-white")
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-indicator"
+                      className="absolute left-0 right-0 -bottom-1 h-[2px] bg-[#2563EB] rounded-full"
+                    />
+                  )}
+                </div>
+              );
+            })}
             <Link
               href="/contact"
-              className="px-6 py-2.5 rounded-full bg-[#2563EB] text-white text-sm font-medium hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/30"
+              className="px-6 py-2.5 rounded-[6px] bg-[#2563EB] text-white text-sm font-medium hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/30"
             >
               Get in Touch
             </Link>
@@ -81,29 +113,33 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+            variants={mobileContainerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
             className="md:hidden bg-white border-b border-gray-100 shadow-xl overflow-hidden absolute top-full left-0 right-0"
           >
             <nav className="flex flex-col px-4 py-6 gap-4">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.path}
-                  className={`text-lg font-medium px-4 py-3 rounded-xl transition-colors ${
-                    location === link.path ? "bg-blue-50 text-[#2563EB]" : "text-gray-600 hover:bg-gray-50"
-                  }`}
-                >
-                  {link.name}
-                </Link>
+                <motion.div key={link.name} variants={mobileItemVariants}>
+                  <Link
+                    href={link.path}
+                    className={`block text-lg font-medium px-4 py-3 rounded-xl transition-colors ${
+                      location === link.path ? "bg-blue-50 text-[#2563EB]" : "text-gray-600 hover:bg-gray-50"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
               ))}
-              <Link
-                href="/contact"
-                className="mx-4 mt-2 text-center px-6 py-3 rounded-full bg-[#2563EB] text-white text-lg font-medium"
-              >
-                Get in Touch
-              </Link>
+              <motion.div variants={mobileItemVariants}>
+                <Link
+                  href="/contact"
+                  className="block mx-4 mt-2 text-center px-6 py-3 rounded-[6px] bg-[#2563EB] text-white text-lg font-medium"
+                >
+                  Get in Touch
+                </Link>
+              </motion.div>
             </nav>
           </motion.div>
         )}
