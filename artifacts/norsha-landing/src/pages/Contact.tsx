@@ -217,7 +217,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isPending}
-                    className="w-full md:w-auto px-10 py-5 rounded-[6px] bg-[#3333CC] text-white font-bold shadow-lg shadow-[#3333CC]/25 hover:bg-[#2828B8] hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-3 text-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                    className="w-full md:w-auto px-10 py-5 rounded-[6px] bg-[#3333CC] text-white font-bold shadow-[0_6px_18px_rgba(0,0,0,0.4)] hover:bg-[#2828B8] hover:shadow-[0_10px_26px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_3px_10px_rgba(0,0,0,0.35)] transition-all duration-300 flex items-center justify-center gap-3 text-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
                   >
                     {isPending ? (
                       <>

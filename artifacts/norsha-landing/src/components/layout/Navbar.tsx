@@ -97,7 +97,7 @@ export function Navbar() {
             })}
             <Link
               href="/contact"
-              className="px-6 py-2.5 rounded-[6px] bg-[#3333CC] text-white text-sm font-medium hover:bg-[#2828B8] transition-colors shadow-lg shadow-[#3333CC]/30"
+              className="px-6 py-2.5 rounded-[6px] bg-[#3333CC] text-white text-sm font-medium hover:bg-[#2828B8] transition-all shadow-[0_4px_12px_rgba(0,0,0,0.35)] hover:shadow-[0_7px_18px_rgba(0,0,0,0.45)] hover:-translate-y-px active:translate-y-0"
             >
               Get in Touch
             </Link>

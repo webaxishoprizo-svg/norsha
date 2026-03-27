@@ -106,7 +106,7 @@ export default function Home() {
             >
               <a 
                 href="#companies" 
-                className="w-full sm:w-auto px-8 py-4 rounded-[6px] bg-[#3333CC] text-white font-medium hover:bg-[#2828B8] transition-all duration-300 text-lg shadow-[0_0_40px_-10px_rgba(51,51,204,0.5)] hover:shadow-[0_0_60px_-15px_rgba(51,51,204,0.7)]"
+                className="w-full sm:w-auto px-8 py-4 rounded-[6px] bg-[#3333CC] text-white font-medium hover:bg-[#2828B8] transition-all duration-300 text-lg shadow-[0_6px_18px_rgba(0,0,0,0.4)] hover:shadow-[0_10px_26px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_3px_10px_rgba(0,0,0,0.35)]"
               >
                 Explore Companies
               </a>
@@ -360,14 +360,9 @@ export default function Home() {
             Whether you're looking for headless ecommerce, voice AI, or digital marketing solutions, our ecosystem is built to serve your ambition.
           </p>
           <div className="relative inline-block">
-            <motion.div 
-              className="absolute inset-0 bg-[#2563EB]/40 blur-[60px] rounded-[6px] -z-10"
-              animate={{ scale: [0.8, 1.2, 0.8] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
             <Link 
               href="/contact"
-              className="inline-flex px-10 py-5 rounded-[6px] bg-[#3333CC] text-white font-medium hover:bg-[#2828B8] transition-all duration-300 text-lg shadow-[0_0_40px_-10px_rgba(51,51,204,0.5)] hover:shadow-[0_0_60px_-15px_rgba(51,51,204,0.7)] relative z-10"
+              className="inline-flex px-10 py-5 rounded-[6px] bg-[#3333CC] text-white font-medium hover:bg-[#2828B8] transition-all duration-300 text-lg shadow-[0_6px_18px_rgba(0,0,0,0.4)] hover:shadow-[0_10px_26px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_3px_10px_rgba(0,0,0,0.35)] relative z-10"
             >
               Start the Conversation
             </Link>
